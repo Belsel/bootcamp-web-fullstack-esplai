@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio formularios 1</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <form>
+          <fieldset>
+            <legend>Datos del usuario</legend>
+            <fieldset>
+              <label for="namefield">Nombre:</label>
+              <input type="text" id="namefield" name="name" required />
+              <label for="surnamefield">Apellido:</label>
+              <input type="text" id="surnamefield" name="surname" required />
+            </fieldset>
+            <label for="emailfield">Correo electrónico:</label>
+            <input type="email" name="email" id="emailfield" required />
+            <label for="datefield">Fecha de nacimiento:</label>
+            <input type="date" name="birthdate" id="birthdatefield" />
+            <label for="messagefield">Mensaje:</label>
+            <textarea id="messagefield" name="message"></textarea>
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpiar</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva de plaza en el bootcamp</title>
+  </head>
+  <body>
+    <main>
+      <form>
+        <fieldset>
+          <legend>Datos personales</legend>
+          <label for="namefield">Nombre y apellidos:</label>
+          <input type="text" id="namefield" name="name" required />
+          <label for="emailfield">Correo electrónico:</label>
+          <input type="email" name="email" id="emailfield" required />
+        </fieldset>
+        <fieldset>
+          <legend>Datos del bootcamp</legend>
+          <label for="bootcamptypefield">Tipo de bootcamp:</label>
+          <select name="bootcamptype" id="bootcamptypefield" required>
+            <option value="fullstack">Fullstack</option>
+            <option value="frontend">Frontend</option>
+            <option value="backend">Backend</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <legend>¿Qué lenguajes de programación te interesan?</legend>
+          <label for="interestedfield">Intereses:</label>
+          <input
+            type="checkbox"
+            name="interestjavascript"
+            id="interestedjavascriptfield"
+            value="javascript"
+          />
+          JavaScript
+          <input
+            type="checkbox"
+            name="interestpython"
+            id="interestedpythonfield"
+            value="python"
+          />
+          Python
+          <input
+            type="checkbox"
+            name="interestjava"
+            id="interestedjavafield"
+            value="java"
+          />
+          Java
+        </fieldset>
+        <fieldset>
+          <legend>Motivación</legend>
+          <label for="motivationfield"
+            >¿Por qué quieres hacer el bootcamp?</label
+          >
+          <textarea id="motivationfield" name="motivation" required></textarea>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>

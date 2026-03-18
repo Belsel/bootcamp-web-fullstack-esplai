@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de cursos</title>
+  </head>
+  <body>
+    <main>
+      <form action="" method="get">
+        <fieldset>
+          <legend>Buscar cursos</legend>
+          <label for="searchfield">¿Qué curso quieres buscar?</label>
+          <input type="search" name="search" id="searchfield" />
+          <label for="categoryfield">Categoría:</label>
+          <select name="category" id="categoryfield">
+            <option value="all">Todas</option>
+            <option value="programming">Programación</option>
+            <option value="design">Diseño</option>
+            <option value="marketing">Marketing</option>
+          </select>
+          <label for="maxdurationfield">Duración máxima (horas):</label>
+          <input
+            type="number"
+            name="maxduration"
+            id="maxdurationfield"
+            min="1"
+            placeholder="1h"
+          />
+          <fieldset>
+            <legend>Nivel del curso</legend>
+            <label for="courselevelbeginnerfield">Principiante</label>
+            <input
+              type="radio"
+              name="courselevel"
+              id="courselevelbeginnerfield"
+              value="beginner"
+            />
+            <label for="courselevelintermediatefield">Intermedio</label>
+            <input
+              type="radio"
+              name="courselevel"
+              id="courselevelintermediatefield"
+              value="intermediate"
+            />
+            <label for="courseleveladvancedfield">Avanzado</label>
+            <input
+              type="radio"
+              name="courselevel"
+              id="courseleveladvancedfield"
+              value="advanced"
+            />
+          </fieldset>
+          <button type="submit">Buscar</button>
+          <button type="reset">Limpiar</button>
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>

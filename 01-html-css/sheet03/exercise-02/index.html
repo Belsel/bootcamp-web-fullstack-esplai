@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css 2, la venganza de la especificidad</title>
+    <style>
+        h1,
+        h2 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        p {
+            color: darkblue;
+        }
+
+        li {
+            color: green;
+        }
+
+        body {
+            background-color: lightpink;
+        }
+
+        .destacado {
+            color: darkgoldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Las cosas de la vida</h1>
+        <h2>Las buenas</h2>
+        <p>Existen</p>
+        <h2>Las malas</h2>
+        <p>Hay unas pocas</p>
+        <p class="destacado">Y obviamente hay más que buenas</p>
+        <ul>
+            <li>Una cosa</li>
+            <li>Dos cosas</li>
+            <li>Tres cosas</li>
+        </ul>
+
+    </main>
+</body>
+
+</html>

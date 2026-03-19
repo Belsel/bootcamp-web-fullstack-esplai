@@ -1,0 +1,99 @@
+<!-- 7. Ejercicio 6 · Tabla con encabezados de fila
+Nivel 3
+Objetivo
+Profundizar en el uso de relaciones entre filas y columnas.
+Enunciado
+Crea una página titulada “Seguimiento semanal del trabajo”.
+Dentro de main , crea una tabla donde cada fila represente un área de trabajo del bootcamp o
+del proyecto.
+Cada fila debe incluir:
+
+Lo que debes decidir tú
+Debes decidir:
+
+Requisitos obligatorios
+No conviertas la tabla en una excusa para colocar bloques visuales. Debe representar
+información realmente tabular.
+
+nombre del área;
+estado actual;
+responsable o referencia;
+observación breve.
+
+qué áreas aparecen;
+qué estados utilizarás;
+el contenido concreto de cada fila.
+
+la tabla debe llevar caption ;
+debe tener encabezados de columna;
+la primera celda de cada fila del cuerpo debe actuar como encabezado de fila;
+debes usar scope="row" al menos una vez en cada fila del cuerpo.
+
+Observa y comprueba
+Compara mentalmente este ejercicio con el anterior:
+
+Se considerará bien resuelto si
+
+8. Ejercicio 7 · Preguntas frecuentes con details y summary
+Nivel 3 · Recomendado
+Objetivo
+Practicar un patrón útil de contenido desplegable.
+Enunciado
+Crea una página titulada “Preguntas frecuentes sobre el bootcamp”.
+Dentro de main , crea una breve introducción y una sección de preguntas frecuentes.
+Requisitos obligatorios
+
+Lo que debes decidir tú
+aquí ya no solo hay encabezados de columna;
+ahora cada fila también tiene una referencia fuerte propia.
+
+se entiende bien la diferencia entre cabecera de columna y cabecera de fila;
+la tabla gana claridad respecto al ejercicio anterior;
+el uso de scope="row" está bien justificado. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seguimiento semanal del trabajo</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <table>
+          <caption>
+            Seguimiento semanal del trabajo
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col">Área</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Responsable</th>
+              <th scope="col">Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Desarrollo Web</th>
+              <td>En progreso</td>
+              <td>Juan Pérez</td>
+              <td>Implementación de nuevas funcionalidades</td>
+            </tr>
+            <tr>
+              <th scope="row">Diseño UX/UI</th>
+              <td>Completado</td>
+              <td>María García</td>
+              <td>Diseño de la interfaz de usuario</td>
+            </tr>
+            <tr>
+              <th scope="row">Testing</th>
+              <td>Pendiente</td>
+              <td>Carlos López</td>
+              <td>Pruebas unitarias y de integración</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

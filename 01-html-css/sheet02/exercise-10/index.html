@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario</title>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend>Formulario de registro</legend>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required />
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" min="0" />
+        <label for="web">Web:</label>
+        <input type="url" id="web" />
+        <label for="condiciones">Acepto condiciones:</label>
+        <input type="checkbox" id="condiciones" required />
+        <button type="submit">Enviar</button>
+        <button type="reset">Limpiar</button>
+      </fieldset>
+    </form>
+  </body>
+</html>

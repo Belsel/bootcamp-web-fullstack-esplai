@@ -1,0 +1,55 @@
+:root {
+    --main-color: #1585c5;
+    --background-color: #efefef;
+    --text-color: #ffffff;
+    --spacing: 2rem;
+    --border-radius: 2rem;
+    --warning-color: #f5d511;
+}
+
+.card-container {
+    margin: var(--spacing);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+article {
+    border-radius: var(--border-radius);
+    background: linear-gradient(0deg, var(--background-color) 65%, var(--main-color) 50%);
+    padding: 10%;
+}
+
+header {
+    background-color: var(--main-color);
+    padding: 1rem;
+}
+
+body {
+    margin: 0;
+}
+
+.warning {
+    background-color: var(--warning-color);
+    align-items: center;
+    justify-content: space-around;
+    justify-self: center;
+    font-size: 5rem;
+    display: flex;
+    padding: 1rem 5rem;
+    border-radius: var(--border-radius);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: var(--text-color);
+    max-width: max(50vw, 100px);
+}
+
+button {
+    border-radius: var(--border-radius);
+    background-color: var(--main-color);
+    border-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    padding: 1rem;
+}

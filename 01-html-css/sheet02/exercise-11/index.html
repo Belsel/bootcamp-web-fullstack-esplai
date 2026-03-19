@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inscripción y seguimiento del bootcamp</title>
+  </head>
+  <body>
+    <header>
+      <h1>Inscripción y seguimiento del bootcamp</h1>
+      <p>
+        Para inscribirte en el bootcamp, por favor completa el formulario de
+        registro. Una vez inscrito, podrás acceder a tu panel de progreso para
+        seguir tu avance en el curso.
+      </p>
+    </header>
+    <section>
+      <form>
+        <fieldset>
+          <legend>Formulario de inscripción</legend>
+          <label for="nombre">Nombre y apellidos:</label>
+          <input type="text" id="nombre" required />
+          <label for="correo">Correo:</label>
+          <input type="email" id="correo" required />
+          <label for="password">Password:</label>
+          <label for="modalidad">Modalidad</label>
+          <select id="modalidad" required>
+            <option value="presencial">Presencial</option>
+            <option value="online">Online</option>
+          </select>
+          <button type="submit">Inscribirse</button>
+          <fieldset>
+            <legend>Intereses tecnológicos</legend>
+            <label>
+              <input type="checkbox" name="intereses" value="html" />
+              HTML
+            </label>
+            <label>
+              <input type="checkbox" name="intereses" value="css" />
+              CSS
+            </label>
+            <label>
+              <input type="checkbox" name="intereses" value="javascript" />
+              JavaScript
+            </label>
+          </fieldset>
+          <label for="motivacion">Motivación para cursar el bootcamp:</label>
+          <textarea
+            id="motivacion"
+            name="motivacion"
+            rows="4"
+            cols="50"
+          ></textarea>
+        </fieldset>
+      </form>
+    </section>
+    <section>
+      <h2>Próximas sesiones</h2>
+      <table>
+        <caption>
+          Sesiones del bootcamp
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Temas</th>
+            <th scope="col">Recursos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sesión 1</td>
+            <td>01/07/2026</td>
+            <td>Introducción a HTML y CSS</td>
+            <td>
+              <a href="mdn.html">MDN</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Sesión 2</td>
+            <td>08/07/2026</td>
+            <td>JavaScript básico</td>
+            <td>
+              <a href="https://www.w3schools.com/js/default.asp">W3Schools</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Sesión 3</td>
+            <td>15/07/2026</td>
+            <td>React</td>
+            <td>
+              <a href="https://www.w3schools.com/react/default.asp"
+                >W3Schools</a
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>Sesión 4</td>
+            <td>22/07/2026</td>
+            <td>Node.js</td>
+            <td>
+              <a href="https://www.w3schools.com/nodejs/default.asp"
+                >W3Schools</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section>
+      <table>
+        <caption>
+          Panel de progreso del alumno
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Sesión</th>
+            <th scope="col">Progreso</th>
+            <th scope="col">Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sesión 1</td>
+            <td><progress value="100" max="100"></progress></td>
+            <td><meter value="90" min="0" max="100"></meter></td>
+          </tr>
+          <tr>
+            <td>Sesión 2</td>
+            <td><progress value="80" max="100"></progress></td>
+            <td><meter value="80" min="0" max="100"></meter></td>
+          </tr>
+          <tr>
+            <td>Sesión 3</td>
+            <td><progress value="60" max="100"></progress></td>
+            <td><meter value="70" min="0" max="100"></meter></td>
+          </tr>
+          <tr>
+            <td>Sesión 4</td>
+            <td><progress value="40" max="100"></progress></td>
+            <td><meter value="60" min="0" max="100"></meter></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <footer>
+      <ul>
+        <li><a href="mailto:info@bootcamp.com">Contacto</a></li>
+        <li><a href="https://www.bootcamp.com/privacy">Privacidad</a></li>
+        <li>
+          <a href="https://www.bootcamp.com/terms">Términos de servicio</a>
+        </li>
+      </ul>
+    </footer>
+  </body>
+</html>

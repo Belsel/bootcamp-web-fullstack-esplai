@@ -1,0 +1,19 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    color: purple;
+}
+
+p {
+    color: red;
+}
+
+.destacado {
+    color: darkgoldenrod;
+}
+
+section p {
+    color: darkgreen;
+}

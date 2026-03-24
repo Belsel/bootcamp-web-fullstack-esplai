@@ -1,0 +1,83 @@
+:root {
+    box-sizing: border-box;
+    --background-color: #ffe628;
+    --card-background-color: #ffffff;
+    --card-border-color: #d7d5d3;
+    --card-figure-background-color: #dcdcdc;
+    --card-type-border-color: #e5dedb;
+    --card-type-color: #c5b8a7;
+    --card-id-color: #917b66;
+    --card-id-background: #cdcdc8;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.searchform {
+
+}
+
+.pokedexgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.pokemon-card {
+    border: 1px solid var(--card-border-color);
+    border-radius: 0.5rem;
+    background-color: var(--card-background-color);
+}
+
+.pokemon-card figure {
+    background-color: var(--card-figure-background-color);
+    display: flex;
+    flex-direction: column;    
+    margin: 0;
+}
+
+.pokemon-card figure img {
+    object-fit: contain;
+    image-rendering: pixelated;
+}
+
+.pokemon-card figcaption {
+    background-color: #ffe628;
+    width: fit-content;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-family: "Ubuntu";
+    color: var(--card-id-color);
+    background-color: var(--card-id-background);
+}
+
+.pokemon-card [type] {
+    border: 1px solid var(--card-type-border-color);
+    border-radius: 0.3rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: "Ubuntu", sans-serif;
+    color: var(--card-type-color);
+    text-align: center;
+    width: fit-content;
+    padding: 0.1rem 0.2rem;
+}
+
+.pokemon-card em {
+    font-style: normal;
+    font-size: 1rem;
+}
+
+.pokemon-name {
+    font-family: "Ubuntu";
+    text-transform: capitalize;
+    font-size: 1rem;
+}

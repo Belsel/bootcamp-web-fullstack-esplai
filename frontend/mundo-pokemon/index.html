@@ -5,96 +5,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mundo Pokémon</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
   <main>
-    <section>
-      <form>
+    <section class="content">
+      <form class="searchform">
         <input id="searchpokemon" type="text" name="pokemon" placeholder="Filtra pokemons por nombre..." />
       </form>
-      <article id="bulbasaur">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur" />
-          <figcaption>ID/1</figcaption>
-        </figure>
-        <h2>Bulbasaur</h2>
-        <p>poison</p>
-        <p>grass</p>
-      </article>
-      <article id="ivysaur">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png" alt="Ivysaur" />
-          <figcaption>ID/2</figcaption>
-        </figure>
-        <h2>Ivysaur</h2>
-        <p>posion</p>
-        <p>grass</p>
-        <p>Evoluciona de: <em>bulbasaur</em></p>
-      </article>
-      <article id="venusaur">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png" alt="Venusaur" />
-          <figcaption>ID/3</figcaption>
-        </figure>
-        <h2>Venusaur</h2>
-        <p>poison</p>
-        <p>grass</p>
-        <p>Evoluciona de: <em>ivysaur</em></p>
-      </article>
-      <article id="charmander">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png" alt="Charmander" />
-          <figcaption>ID/4</figcaption>
-        </figure>
-        <h2>Charmander</h2>
-        <p>fire</p>
-      </article>
-      <article id="charmeleon">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png" alt="Charmeleon" />
-          <figcaption>ID/5</figcaption>
-        </figure>
-        <h2>Charmeleon</h2>
-        <p>fire</p>
-        <p>Evoluciona de: <em>charmander</em></p>
-      </article>
-      <article id="charizard">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Charizard" />
-          <figcaption>ID/6</figcaption>
-        </figure>
-        <h2>Charizard</h2>
-        <p>fire</p>
-        <p>flying</p>
-        <p>Evoluciona de: <em>charmeleon</em></p>
-      </article>
-      <article id="squirtle">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle" />
-          <figcaption>ID/7</figcaption>
-        </figure>
-        <h2>Squirtle</h2>
-        <p>water</p>
-      </article>
-      <article id="wartortle">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png" alt="Wartortle" />
-          <figcaption>ID/8</figcaption>
-        </figure>
-        <h2>Wartortle</h2>
-        <p>water</p>
-        <p>Evoluciona de: <em>squirtle</em></p>
-      </article>
-      <article id="blastoise">
-        <figure>
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png" alt="Blastoise" />
-          <figcaption>ID/9</figcaption>
-        </figure>
-        <h2>Blastoise</h2>
-        <p>water</p>
-        <p>Evoluciona de: <em>wartortle</em></p>
-      </article>
+      <section class="pokedexgrid">
+        <article id="bulbasaur" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="Bulbasaur" />
+            <figcaption>ID/1</figcaption>
+          </figure>
+          <h2 class="pokemon-name">bulbasaur</h2>
+          <p type="poison">poison</p>
+          <p type="grass">grass</p>
+        </article>
+        <article id="ivysaur" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png" alt="Ivysaur" />
+            <figcaption>ID/2</figcaption>
+          </figure>
+          <h2>ivysaur</h2>
+          <p type="poison">poison</p>
+          <p type="grass">grass</p>
+          <p>Evoluciona de: <em>bulbasaur</em></p>
+        </article>
+        <article id="venusaur" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png" alt="Venusaur" />
+            <figcaption>ID/3</figcaption>
+          </figure>
+          <h2>venusaur</h2>
+          <p type="poison">poison</p>
+          <p type="grass">grass</p>
+          <p>Evoluciona de: <em>ivysaur</em></p>
+        </article>
+        <article id="charmander" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+              alt="Charmander" />
+            <figcaption>ID/4</figcaption>
+          </figure>
+          <h2>charmander</h2>
+          <p type="fire">fire</p>
+        </article>
+        <article id="charmeleon" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+              alt="Charmeleon" />
+            <figcaption>ID/5</figcaption>
+          </figure>
+          <h2>Charmeleon</h2>
+          <p type="fire">fire</p>
+          <p>Evoluciona de: <em>charmander</em></p>
+        </article>
+        <article id="charizard" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Charizard" />
+            <figcaption>ID/6</figcaption>
+          </figure>
+          <h2>Charizard</h2>
+          <p type="fire">fire</p>
+          <p type="flying">flying</p>
+          <p>Evoluciona de: <em>charmeleon</em></p>
+        </article>
+        <article id="squirtle" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png" alt="Squirtle" />
+            <figcaption>ID/7</figcaption>
+          </figure>
+          <h2>Squirtle</h2>
+          <p type="water">water</p>
+        </article>
+        <article id="wartortle" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png" alt="Wartortle" />
+            <figcaption>ID/8</figcaption>
+          </figure>
+          <h2>Wartortle</h2>
+          <p type="water">water</p>
+          <p>Evoluciona de: <em>squirtle</em></p>
+        </article>
+        <article id="blastoise" class="pokemon-card">
+          <figure>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png" alt="Blastoise" />
+            <figcaption>ID/9</figcaption>
+          </figure>
+          <h2>Blastoise</h2>
+          <p type="water">water</p>
+          <p>Evoluciona de: <em>wartortle</em></p>
+        </article>
+      </section>
     </section>
   </main>
 </body>

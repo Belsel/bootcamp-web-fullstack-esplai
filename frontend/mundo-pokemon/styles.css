@@ -42,11 +42,12 @@ body {
     display: flex;
     flex-direction: column;    
     margin: 0;
+    gap: 0;
 }
 
 .pokemon-card figure img {
-    object-fit: contain;
     image-rendering: pixelated;
+    padding: 0 3rem ;
 }
 
 .pokemon-card figcaption {
@@ -59,16 +60,27 @@ body {
     background-color: var(--card-id-background);
 }
 
+.pokemon-info {
+    padding: 0.5rem 1rem;
+}
+
+.type-container {
+    display: flex;
+    gap: 0.25rem;
+    margin-top: 0.1rem;
+}
+
 .pokemon-card [type] {
     border: 1px solid var(--card-type-border-color);
     border-radius: 0.3rem;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-family: "Ubuntu", sans-serif;
     color: var(--card-type-color);
     text-align: center;
     width: fit-content;
     padding: 0.1rem 0.2rem;
+    margin: 0;
 }
 
 .pokemon-card em {
@@ -79,5 +91,6 @@ body {
 .pokemon-name {
     font-family: "Ubuntu";
     text-transform: capitalize;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin: 0;
 }

@@ -1,122 +1,132 @@
 :root {
-    box-sizing: border-box;
-    --background-color: #ffe628;
-    --card-background-color: #ffffff;
-    --card-border-color: #d7d5d3;
-    --card-figure-background-color: #dcdcdc;
-    --card-type-border-color: #e5dedb;
-    --card-type-color: #c5b8a7;
-    --card-id-color: #917b66;
-    --card-id-background: #cdcdc8;
-    --card-evolution-border-color: #5a3414;
-    --card-evolution-text-color: #af8a89;
-    --card-evolution-name-color: #565656;
+  box-sizing: border-box;
+  --background-color: #ffe628;
+  --card-background-color: #ffffff;
+  --card-border-color: #d7d5d3;
+  --card-figure-background-color: #dcdcdc;
+  --card-type-border-color: #e5dedb;
+  --card-type-color: #c5b8a7;
+  --card-id-color: #917b66;
+  --card-id-background: #cdcdc8;
+  --card-evolution-border-color: #5a3414;
+  --card-evolution-text-color: #af8a89;
+  --card-evolution-name-color: #565656;
 }
 
 body {
-    background-color: var(--background-color);
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  background-color: var(--background-color);
+  margin: 0;
 }
 
 .searchform {
-
+  flex-grow: 1;
 }
 
+/* 
+Auto-fit hace variable el número de columnas.
+minmax(200px,1fr) dice: como mínimo tiene que medir 200px si no, que ocupe una fracción.
+max-width: calc(3* 240): me da como tamaño máximo del contenedor 3 tarjetas (y un poquitillo para el margen)
+margin: 0 auto: rellena el resto con el margen horizontal
+*/
 .pokedexgrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: calc(3 * 240px);
+  margin: 0 auto;
 }
 
 .pokemon-card {
-    border: 1px solid var(--card-border-color);
-    border-radius: 0.1rem;
-    background-color: var(--card-background-color);
-    box-shadow: -1px 0 4px rgba(0 0 0 / 0.2);
+  margin: 0.5rem;
+  border: 1px solid var(--card-border-color);
+  border-radius: 0.1rem;
+  background-color: var(--card-background-color);
+  box-shadow: -1px 0 4px rgba(0 0 0 / 0.2);
 }
 
 .pokemon-card figure {
-    background-color: var(--card-figure-background-color);
-    display: flex;
-    flex-direction: column;    
-    margin: 0;
-    gap: 0;
+  position: relative;
+  background-color: var(--card-figure-background-color);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  gap: 0;
+  min-height: 130px;
 }
 
 .pokemon-card figure img {
-    image-rendering: pixelated;
-    padding: 0 3rem ;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  image-rendering: pixelated;
+  width: fit-content;
+  height: auto;
+  transform: translate(-50%, -50%);
 }
-
 .pokemon-card figcaption {
-    width: fit-content;
-    padding: 0.5rem;
-    font-size: 0.75rem;
-    font-family: "Ubuntu";
-    color: var(--card-id-color);
-    background-color: var(--card-id-background);
-    font-weight: 800;
-    word-spacing: -1px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: fit-content;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-family: "Ubuntu";
+  color: var(--card-id-color);
+  background-color: var(--card-id-background);
+  font-weight: 800;
+  word-spacing: -1px;
 }
 
 .pokemon-info {
-    padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .type-container {
-    display: flex;
-    gap: 0.25rem;
-    margin-top: 0.1rem;
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.1rem;
 }
 
 .pokemon-card [type] {
-    border: 1px solid var(--card-type-border-color);
-    border-radius: 0.3rem;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    font-family: "Ubuntu", sans-serif;
-    color: var(--card-type-color);
-    text-align: center;
-    width: fit-content;
-    padding: 0.1rem 0.2rem;
-    margin: 0;
+  border: 1px solid var(--card-type-border-color);
+  border-radius: 0.3rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-family: "Ubuntu", sans-serif;
+  color: var(--card-type-color);
+  text-align: center;
+  width: fit-content;
+  padding: 0.1rem 0.2rem;
+  margin: 0;
 }
 
 .pokemon-name {
-    font-family: "Ubuntu";
-    text-transform: capitalize;
-    font-size: 1.2rem;
-    margin: 0;
+  font-family: "Ubuntu";
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
-
 .evolution-name {
-    font-style: normal;
-    font-size: 1.2rem;
-    margin: 0;
-    color: var(--card-evolution-name-color);
-} 
+  font-style: normal;
+  font-size: 1.2rem;
+  margin: 0;
+  color: var(--card-evolution-name-color);
+}
 
 .evolution-info {
-    border-left: 0.25rem solid var(--card-evolution-border-color);
-    padding-left: 0.25rem;
-    margin: 0.5rem 0 0.5rem;
-    font-family: "Ubuntu";   
+  border-left: 0.25rem solid var(--card-evolution-border-color);
+  padding-left: 0.25rem;
+  margin: 0.5rem 0 0.5rem;
+  font-family: "Ubuntu";
 }
 
 .evolution-name {
-    font-weight: 100;
+  font-weight: 100;
 }
 
 .evolution-text {
-    margin: 0;
-    font-weight: 100;
-    font-size: 0.8rem;
-    color: var(--card-evolution-text-color)
+  margin: 0;
+  font-weight: 100;
+  font-size: 0.8rem;
+  color: var(--card-evolution-text-color);
 }

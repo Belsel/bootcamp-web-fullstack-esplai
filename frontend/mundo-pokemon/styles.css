@@ -50,12 +50,12 @@ body {
 
 .cheek--left {
   bottom: calc(-1 * var(--cheek-size));
-  left: calc(-1 *var(--cheek-size));
+  left: calc(-1 * var(--cheek-size));
 }
 
 .cheek--right {
   bottom: calc(-1 * var(--cheek-size));
-  right: calc(-1 *var(--cheek-size));
+  right: calc(-1 * var(--cheek-size));
 }
 
 .searchform {
@@ -82,7 +82,6 @@ body {
   font-weight: 100;
 }
 
-
 /* 
 Auto-fit hace variable el número de columnas.
 minmax(200px,1fr) dice: como mínimo tiene que medir 200px si no, que ocupe una fracción.
@@ -96,12 +95,72 @@ margin: 0 auto: rellena el resto con el margen horizontal
   margin: 0 auto;
 }
 
-.pokemon-card {
+article {
   margin: 0.5rem;
+}
+
+.pokemon-card {
   border: 1px solid var(--card-border-color);
   border-radius: 0.1rem;
   background-color: var(--card-background-color);
   box-shadow: -1px 0 4px rgba(0 0 0 / 0.2);
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  max-height: 250px;
+}
+
+.pokemon-card:hover {
+  cursor: pointer;
+}
+
+.pokemon-card:focus {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: min(240px, 95vw);
+  height: fit-content;
+  max-height: min(400px, 95vh);
+  transform: translate(-50%, -50%);
+  transition: max-height 1.5s ease-out;
+  z-index: 1;
+  box-shadow: 0 0 10px rgb(0, 153, 255);
+  border: 2px solid #00d9ff;
+  border-radius: 0.2rem;
+  cursor: auto;
+}
+
+article:focus-within::before {
+  content: "";
+  background-color: rgba(0 0 0 / 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.pokemon-back-info {
+  display: none;
+  margin: 1rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.pokemon-back-info h2 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--card-evolution-text-color);
+  margin: 0;
+}
+
+.pokemon-back-info p {
+  color: var(--card-evolution-name-color);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.pokemon-card:focus .pokemon-back-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .pokemon-card figure {

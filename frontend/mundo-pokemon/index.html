@@ -1,131 +1,186 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mundo Pokémon</title>
-  </head>
-  <body>
-    <main>
-      <section>
-        <form>
-          <input
-            id="searchpokemon"
-            type="text"
-            name="pokemon"
-            placeholder="Filtra pokemons por nombre..."
-          />
-        </form>
-        <article id="bulbasaur">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mundo Pokémon</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <main>
+    <section class="content">
+      <form class="searchform">
+        <input id="searchpokemon" type="text" name="pokemon" placeholder="Filtra pokemons por nombre..." />
+      </form>
+      <section class="pokedexgrid">
+        <article id="bulbasaur" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
-              alt="Bulbasaur"
-            />
-            <figcaption>ID/1</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/1.gif"
+              alt="Bulbasaur" />
+            <figcaption>ID / 1</figcaption>
           </figure>
-          <h2>Bulbasaur</h2>
-          <p>POISON</p>
-          <p>GRASS</p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">bulbasaur</h2>
+            <div class="type-container">
+              <p type="poison">poison</p>
+              <p type="grass">grass</p>
+            </div>
+          </div>
         </article>
-        <article id="ivysaur">
+        <article id="ivysaur" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
-              alt="Ivysaur"
-            />
-            <figcaption>ID/2</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/2.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 2</figcaption>
           </figure>
-          <h2>Ivysaur</h2>
-          <p>POISON</p>
-          <p>GRASS</p>
-          <p>Evoluciona de: <em>bulbasaur</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">ivysaur</h2>
+            <div class="type-container">
+              <p type="poison">poison</p>
+              <p type="grass">grass</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">bulbasaur</p>
+            </div>
+          </div>
         </article>
-        <article id="venusaur">
+        <article id="venusaur" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
-              alt="Venusaur"
-            />
-            <figcaption>ID/3</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/3.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 3</figcaption>
           </figure>
-          <h2>Venusaur</h2>
-          <p>POISON</p>
-          <p>GRASS</p>
-          <p>Evoluciona de: <em>ivysaur</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">venusaur</h2>
+            <div class="type-container">
+              <p type="poison">poison</p>
+              <p type="grass">grass</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">ivysaur</p>
+            </div>
+          </div>
         </article>
-        <article id="charmander">
+        <article id="charmander" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-              alt="Charmander"
-            />
-            <figcaption>ID/4</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/4.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 4</figcaption>
           </figure>
-          <h2>Charmander</h2>
-          <p>FIRE</p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">charmander</h2>
+            <div class="type-container">
+              <p type="fire">fire</p>
+            </div>
+          </div>
         </article>
-        <article id="charmeleon">
+        <article id="charmeleon" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
-              alt="Charmeleon"
-            />
-            <figcaption>ID/5</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/5.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 5</figcaption>
           </figure>
-          <h2>Charmeleon</h2>
-          <p>FIRE</p>
-          <p>Evoluciona de: <em>charmander</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">charmeleon</h2>
+            <div class="type-container">
+              <p type="fire">fire</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">charmander</p>
+            </div>
+          </div>
         </article>
-        <article id="charizard">
+        <article id="charizard" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-              alt="Charizard"
-            />
-            <figcaption>ID/6</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/6.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 6</figcaption>
           </figure>
-          <h2>Charizard</h2>
-          <p>FIRE</p>
-          <p>FLYING</p>
-          <p>Evoluciona de: <em>charmeleon</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">charizard</h2>
+            <div class="type-container">
+              <p type="fire">fire</p>
+              <p type="flying">flying</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">charmeleon</p>
+            </div>
+          </div>
         </article>
-        <article id="squirtle">
+        <article id="squirtle" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
-              alt="Squirtle"
-            />
-            <figcaption>ID/7</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/7.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 7</figcaption>
           </figure>
-          <h2>Squirtle</h2>
-          <p>WATER</p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">squirtle</h2>
+            <div class="type-container">
+              <p type="water">water</p>
+            </div>
+          </div>
         </article>
-        <article id="wartortle">
+        <article id="wartortle" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
-              alt="Wartortle"
-            />
-            <figcaption>ID/8</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/8.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 8</figcaption>
           </figure>
-          <h2>Wartortle</h2>
-          <p>WATER</p>
-          <p>Evoluciona de: <em>squirtle</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">wartortle</h2>
+            <div class="type-container">
+              <p type="water">water</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">squirtle</p>
+            </div>
+          </div>
         </article>
-        <article id="blastoise">
+        <article id="blastoise" class="pokemon-card">
           <figure>
             <img
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
-              alt="Blastoise"
-            />
-            <figcaption>ID/9</figcaption>
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/9.gif"
+              alt="Ivysaur" />
+            <figcaption>ID / 9</figcaption>
           </figure>
-          <h2>Blastoise</h2>
-          <p>WATER</p>
-          <p>Evoluciona de: <em>wartortle</em></p>
+          <div class="pokemon-info">
+            <h2 class="pokemon-name">blastoise</h2>
+            <div class="type-container">
+              <p type="water">water</p>
+            </div>
+            <div class="evolution-info">
+              <p class="evolution-text">Evoluciona de:</p>
+              <p class="evolution-name">wartortle</p>
+            </div>
+          </div>
         </article>
       </section>
-    </main>
-  </body>
+    </section>
+  </main>
+  <div class="cheek cheek--left background-figure"></div>
+  <div class="cheek cheek--right background-figure"></div>
+  <div class="ear ear--right background-figure"></div>
+  <div class="ear ear--left background-figure"></div>
+</body>
+
 </html>

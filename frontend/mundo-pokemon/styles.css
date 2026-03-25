@@ -11,6 +11,9 @@
   --card-evolution-border-color: #5a3414;
   --card-evolution-text-color: #af8a89;
   --card-evolution-name-color: #565656;
+  --searchform-placeholder-color: #cccccc;
+  --cheek-size: 8vw;
+  --ear-size: 5vw;
 }
 
 body {
@@ -18,9 +21,67 @@ body {
   margin: 0;
 }
 
-.searchform {
-  flex-grow: 1;
+.background-figure {
+  position: fixed;
+  z-index: -1;
 }
+
+.cheek {
+  border-radius: 100%;
+  background: red;
+  padding: var(--cheek-size);
+}
+
+.ear--left {
+  left: calc(-1 * var(--ear-size));
+  top: calc(-1 * var(--ear-size));
+}
+
+.ear--right {
+  right: calc(-1 * var(--ear-size));
+  top: calc(-1 * var(--ear-size));
+}
+
+.ear {
+  background: black;
+  padding: var(--ear-size);
+  transform: rotate(45deg);
+}
+
+.cheek--left {
+  bottom: calc(-1 * var(--cheek-size));
+  left: calc(-1 *var(--cheek-size));
+}
+
+.cheek--right {
+  bottom: calc(-1 * var(--cheek-size));
+  right: calc(-1 *var(--cheek-size));
+}
+
+.searchform {
+  margin: 1rem auto;
+  min-width: calc(240px + 0.5rem);
+  max-width: calc((3 * 240px) - 1rem);
+  width: 94vw;
+}
+
+.searchform input {
+  width: 100%;
+  border: none;
+  height: 2.5rem;
+  box-shadow: 0 0 10px rgba(0 0 0 / 0.3);
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.searchform input::placeholder {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  color: var(--searchform-placeholder-color);
+  font-weight: 100;
+}
+
 
 /* 
 Auto-fit hace variable el número de columnas.

@@ -8,13 +8,14 @@ function crearTextoTurno(numeroTurno, mensajeBase) {
     return `turno ${numeroTurno}: ${mensajeBase}`;
 }
 
-function mostrarTurnos(numeroParticipantes, mensajeBase, operadorMensaje) {
+function mostrarTurnos(numeroParticipantes, mensajeBase, operadorMensaje, turnoInicial = 1) {
     if (!validarParticipantes(numeroParticipantes)) return false;
-    for (i = 1; i <= numeroParticipantes; ++i) {
+    for (i = turnoInicial; i <= numeroParticipantes; ++i) {
         operadorMensaje(crearTextoTurno(i, mensajeBase));
     }
     return true;
 }
 
 mostrarTurnos(5, "comienza la práctica", t => console.log(`-- ${t} --`));
-mostrarTurnos(5, "comienza la práctica", t => console.log(t.toUpperCase()));
+mostrarTurnos(5, "comienza la práctica", t => console.log(t.toUpperCase()), 4);
+mostrarTurnos(5, "comienza la práctica", t => console.log(t.toUpperCase()), 2);

@@ -204,6 +204,9 @@ article:focus-within::before {
   display: flex;
   gap: 0.25rem;
   margin-top: 0.1rem;
+  margin-bottom: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .pokemon-card [type] {

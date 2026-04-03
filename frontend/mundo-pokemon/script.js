@@ -66,10 +66,16 @@ const pokemonData = [
 
 const grid = document.getElementById("pokedexgrid");
 
-for (let i = 0; i < pokemonData.length; ++i) {
+function loadCards(data, grid) {
+    for (let i = 0; i < data.length; ++i) {
+        createCard(data[i], grid);
+    }
+}
+
+function createCard(data, grid) {
     // Article
     const element = document.createElement("article");
-    element.id = pokemonData[i].id;
+    element.id = data.id;
     grid.append(element);
 
     // Outer div
@@ -78,68 +84,88 @@ for (let i = 0; i < pokemonData.length; ++i) {
     outerDiv.tabIndex = 0;
     element.append(outerDiv);
 
+    outerDiv.append(createPokemonFigure(data));
+    outerDiv.append(createInfoDiv(data));
+    outerDiv.append(createBackInfo(data));
+}
+
+function createPokemonFigure(data) {
     // Figure
     const figure = document.createElement("figure");
-    outerDiv.append(figure);
 
     // Img
     const frontImg = document.createElement("img");
-    frontImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pokemonData[i].id}.gif`;
-    frontImg.alt = pokemonData[i].name;
+    frontImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${data.id}.gif`;
+    frontImg.alt = data.name;
     figure.append(frontImg);
 
     // Fig caption
     const figCaption = document.createElement("figcaption");
-    figCaption.textContent = `ID / ${pokemonData[i].id}`;
+    figCaption.textContent = `ID / ${data.id}`;
     figure.append(figCaption);
 
+    return figure;
+}
+
+function createInfoDiv(data) {
     // Info div
     const infoDiv = document.createElement("div");
     infoDiv.classList.add("pokemon-info");
-    outerDiv.append(infoDiv);
 
     // Name title
     const nameTitle = document.createElement("h2");
-    nameTitle.textContent = pokemonData[i].name;
+    nameTitle.textContent = data.name;
     nameTitle.classList.add("pokemon-name")
     infoDiv.append(nameTitle);
 
-    if (pokemonData[i].types !== null) {
-        // Type container
-        const typeContainer = document.createElement("ul");
-        typeContainer.classList.add("type-container");
-        infoDiv.append(typeContainer);
-
-        // Type
-        pokemonData[i].types.forEach((type) => {
-            const pokeType = document.createElement("li");
-            pokeType.type = type;
-            pokeType.textContent = type;
-            typeContainer.append(pokeType);
-        })
+    if (data.types !== null) {
+        infoDiv.append(createTypes(data));
     }
 
-    if (pokemonData[i].evoFrom !== null) {
-        const evoDiv = document.createElement("div");
-        evoDiv.classList.add("evolution-info");
-        infoDiv.append(evoDiv);
-
-        const evoText = document.createElement("p");
-        evoText.classList.add("evolution-text");
-        evoText.textContent = "Evoluciona de:"
-        evoDiv.append(evoText);
-
-        const evoName = document.createElement("p");
-        evoName.classList.add("evolution-name");
-        evoName.textContent = pokemonData[i].evoFrom;
-        evoDiv.append(evoName);
-
+    if (data.evoFrom !== null) {
+        infoDiv.append(createEvo(data));
     }
 
+    return infoDiv;
+}
+
+function createTypes(data) {
+    // Type container
+    const typeContainer = document.createElement("ul");
+    typeContainer.classList.add("type-container");
+
+    // Type
+    data.types.forEach((type) => {
+        const pokeType = document.createElement("li");
+        pokeType.type = type;
+        pokeType.textContent = type;
+        typeContainer.append(pokeType);
+    })
+
+    return typeContainer;
+}
+
+function createEvo(data) {
+    const evoDiv = document.createElement("div");
+    evoDiv.classList.add("evolution-info");
+
+    const evoText = document.createElement("p");
+    evoText.classList.add("evolution-text");
+    evoText.textContent = "Evoluciona de:"
+    evoDiv.append(evoText);
+
+    const evoName = document.createElement("p");
+    evoName.classList.add("evolution-name");
+    evoName.textContent = data.evoFrom;
+    evoDiv.append(evoName);
+
+    return evoDiv;
+}
+
+function createBackInfo(data) {
     // Back info div
     const backInfoDiv = document.createElement("div");
     backInfoDiv.classList.add("pokemon-back-info");
-    outerDiv.append(backInfoDiv);
 
     // Pokedex title
     const pokedexTitle = document.createElement("h2");
@@ -148,7 +174,10 @@ for (let i = 0; i < pokemonData.length; ++i) {
 
     // Pokedex description
     const pokedexDescription = document.createElement("p");
-    pokedexDescription.innerText = pokemonData[i].description;
+    pokedexDescription.innerText = data.description;
     backInfoDiv.append(pokedexDescription);
 
+    return backInfoDiv;
 }
+
+loadCards(pokemonData, grid);

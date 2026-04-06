@@ -209,7 +209,7 @@ article:focus-within::before {
   list-style-type: none;
 }
 
-.pokemon-card [type] {
+.pokemon-card [data-type] {
   border: 1px solid var(--card-type-border-color);
   border-radius: 0.3rem;
   text-transform: uppercase;

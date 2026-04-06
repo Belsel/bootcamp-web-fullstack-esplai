@@ -270,6 +270,10 @@ article:not(:focus-within) .pokemon-card:hover figure img {
   transform: scale(2) translate(0%, -20%);
 }
 
+article:focus-within .pokemon-card figure img {
+  transition: transform 0s;
+}
+
 article:not(:focus-within):hover .pokemon-card figure,
 article:focus-within .pokemon-card figure {
   background-image:

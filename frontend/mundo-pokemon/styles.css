@@ -253,3 +253,7 @@ article:focus-within::before {
   font-size: 0.8rem;
   color: var(--card-evolution-text-color);
 }
+
+.scroll-sentinel {
+  height: 10px;
+}

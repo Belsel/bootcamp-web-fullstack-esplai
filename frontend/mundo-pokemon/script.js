@@ -66,6 +66,10 @@ import { getPokemonById, getMaxPokemon } from "./services/getPokemon.js";
 // ]
 
 const grid = document.getElementById("pokedexgrid");
+const BATCH_SIZE = 21;
+let currentOffset = 1;
+let maxPokemon = 0;
+let loading = false;
 
 function createCard(data) {
   // Article
@@ -176,27 +180,50 @@ function createBackInfo(data) {
   return backInfoDiv;
 }
 
-async function loadData(amount, grid) {
-  const placeholders = [];
-
-  for (let i = 1; i <= amount; ++i) {
-    const placeholder = document.createElement("div");
-    placeholder.classList.add("pokemon-placeholder");
-    grid.append(placeholder);
-    placeholders.push(placeholder);
-  }
-
-  for (let i = 1; i <= amount; ++i) {
-    getPokemonById(i).then((pokemon) => {
-      const card = createCard(pokemon);
-      placeholders[i - 1].replaceWith(card);
-    });
-  }
+async function init() {
+  maxPokemon = await getMaxPokemon();
+  loadNextBatch();
+  setupInfiniteScroll();
 }
 
-async function init() {
-  const maxPokemon = await getMaxPokemon();
-  await loadData(maxPokemon, grid);
+async function loadNextBatch() {
+  if (loading) return;
+  loading = true;
+
+  const end = Math.min(currentOffset + BATCH_SIZE - 1, maxPokemon);
+  const promises = [];
+
+  for (let i = currentOffset; i <= end; ++i) {
+    promises.push(getPokemonById(i));
+  }
+
+  const results = await Promise.all(promises);
+
+  results.sort((a, b) => a.id - b.id);
+
+  const fragment = new DocumentFragment();
+
+  results.forEach((pokemon) => {
+    fragment.append(createCard(pokemon));
+  });
+
+  grid.append(fragment);
+
+  currentOffset = end + 1;
+  loading = false;
+}
+
+function setupInfiniteScroll() {
+  const sentinel = document.getElementById("scroll-sentinel");
+
+  const observer = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    if (entry.isIntersecting && currentOffset <= maxPokemon) {
+      loadNextBatch();
+    }
+  });
+
+  observer.observe(sentinel);
 }
 
 init();

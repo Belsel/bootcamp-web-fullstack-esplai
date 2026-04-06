@@ -14,6 +14,8 @@
   --searchform-placeholder-color: #cccccc;
   --cheek-size: 8vw;
   --ear-size: 5vw;
+  --type-color-1: #dcdcdc;
+  --type-color-2: #bfbfbf;
 }
 
 body {
@@ -166,22 +168,139 @@ article:focus-within::before {
 .pokemon-card figure {
   position: relative;
   background-color: var(--card-figure-background-color);
+  background-size: 300% 300%;
+  transition:
+    background 0.4s ease-out,
+    background-position 0.4s ease-out;
   display: flex;
   flex-direction: column;
   margin: 0;
   gap: 0;
   min-height: 130px;
+  overflow: hidden;
+}
+
+.pokemon-card figure::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-1) 70%, white) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-1) 70%, white) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-2) 70%, white) 1px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-1) 60%, white) 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-2) 60%, white) 2px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-1) 80%, white) 1px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-2) 80%, white) 1px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-1) 75%, white) 1px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle,
+      color-mix(in srgb, var(--type-color-2) 55%, white) 2px,
+      transparent 4px
+    );
+  background-repeat:
+    repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat;
+  background-size:
+    60px 60px,
+    80px 80px,
+    50px 50px,
+    110px 110px,
+    40px 40px,
+    90px 90px,
+    70px 70px,
+    130px 130px;
+  background-position:
+    0 0,
+    20px 35px,
+    45px 15px,
+    5px 70px,
+    35px 10px,
+    60px 55px,
+    25px 90px,
+    75px 30px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.2s ease-out;
 }
 
 .pokemon-card figure img {
   position: absolute;
   left: 50%;
   top: 50%;
-  image-rendering: pixelated;
   width: fit-content;
   height: auto;
   transform: translate(-50%, -50%);
+  transition: transform 0.6s ease-out;
 }
+
+article:not(:focus-within) .pokemon-card:hover figure img {
+  transform: scale(2) translate(0%, -20%);
+}
+
+article:not(:focus-within):hover .pokemon-card figure,
+article:focus-within .pokemon-card figure {
+  background-image:
+    linear-gradient(160deg, rgba(255, 255, 255, 0.5) 0%, transparent 20%),
+    linear-gradient(
+      165deg,
+      var(--type-color-1) 45%,
+      var(--type-color-2) 70%,
+      var(--type-color-2) 75%,
+      var(--type-color-1) 95%,
+      var(--type-color-1) 90%
+    );
+  background-repeat: repeat, repeat, repeat;
+  background-size:
+    100% 100%,
+    100% 100%,
+    300% 300%;
+  background-position:
+    0 0,
+    0 0,
+    0 0;
+  animation: moveGradient 6s linear infinite;
+}
+
+article:not(:focus-within):hover .pokemon-card figure::before,
+article:focus-within .pokemon-card figure::before {
+  opacity: 0.65;
+  animation: starDrift 3.2s linear infinite;
+  animation-timing-function: linear;
+}
+
 .pokemon-card figcaption {
   position: absolute;
   left: 0;
@@ -256,4 +375,38 @@ article:focus-within::before {
 
 .scroll-sentinel {
   height: 10px;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -33% 0%;
+  }
+}
+
+@keyframes starDrift {
+  0% {
+    background-position:
+      0 0,
+      20px 35px,
+      45px 15px,
+      5px 70px,
+      35px 10px,
+      60px 55px,
+      25px 90px,
+      75px 30px;
+  }
+  100% {
+    background-position:
+      -180px 240px,
+      -150px 270px,
+      -170px 220px,
+      -190px 300px,
+      -130px 255px,
+      -160px 310px,
+      -140px 280px,
+      -200px 340px;
+  }
 }

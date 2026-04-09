@@ -1,7 +1,7 @@
 import { getPokemonById, getPokemonList } from "./services/getPokemon.js";
 
 const grid = document.getElementById("pokedexgrid");
-const BATCH_SIZE = 22;
+const BATCH_SIZE = 21;
 let currentOffset = 0;
 let pokemonList;
 let pokemonData;

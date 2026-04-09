@@ -1,10 +1,13 @@
-import { getPokemonById, getMaxPokemon } from "./services/getPokemon.js";
+import { getPokemonById, getPokemonList } from "./services/getPokemon.js";
 
 const grid = document.getElementById("pokedexgrid");
 const BATCH_SIZE = 21;
-let currentOffset = 1;
-let maxPokemon = 0;
+let currentOffset = 0;
+let pokemonList;
+let pokemonData;
+let currentSearch;
 let loading = false;
+let observer = null;
 
 function createCard(data) {
   // Article
@@ -130,7 +133,9 @@ function createBackInfo(data) {
 }
 
 async function init() {
-  maxPokemon = await getMaxPokemon();
+  await getPokemonData();
+  currentSearch = pokemonList.entries.map((entry) => entry.name);
+  setupSearch();
   loadNextBatch();
   setupInfiniteScroll();
 }
@@ -139,35 +144,47 @@ async function loadNextBatch() {
   if (loading) return;
   loading = true;
 
-  const end = Math.min(currentOffset + BATCH_SIZE - 1, maxPokemon);
+  const end = Math.min(currentOffset + BATCH_SIZE, currentSearch.length);
+
   const promises = [];
 
-  for (let i = currentOffset; i <= end; ++i) {
-    promises.push(getPokemonById(i));
+  for (let i = currentOffset; i < end; ++i) {
+    const name = currentSearch[i].toLowerCase();
+
+    if (pokemonData.has(name) && pokemonData.get(name) !== null) {
+      insertCardSorted(pokemonData.get(name));
+      continue;
+    }
+
+    const pokemonInfo = pokemonList.entries.find(
+      (pokemon) => pokemon.name === name,
+    );
+
+    if (!pokemonInfo) continue;
+
+    promises.push(
+      getPokemonById(pokemonInfo.id).then((pokemon) => {
+        pokemonData.set(pokemon.name, pokemon);
+        insertCardSorted(pokemon);
+      }),
+    );
   }
 
-  const results = await Promise.all(promises);
+  // No esperamos a que terminen para pintar, solo para liberar loading
+  await Promise.allSettled(promises);
 
-  results.sort((a, b) => a.id - b.id);
+  localStorage.setItem("pokemonData", JSON.stringify([...pokemonData]));
 
-  const fragment = new DocumentFragment();
-
-  results.forEach((pokemon) => {
-    fragment.append(createCard(pokemon));
-  });
-
-  grid.append(fragment);
-
-  currentOffset = end + 1;
+  currentOffset = end;
   loading = false;
 }
 
 function setupInfiniteScroll() {
   const sentinel = document.getElementById("scroll-sentinel");
 
-  const observer = new IntersectionObserver((entries) => {
+  observer = new IntersectionObserver((entries) => {
     const entry = entries[0];
-    if (entry.isIntersecting && currentOffset <= maxPokemon) {
+    if (entry.isIntersecting && currentOffset < currentSearch.length) {
       loadNextBatch();
     }
   });
@@ -175,4 +192,68 @@ function setupInfiniteScroll() {
   observer.observe(sentinel);
 }
 
+async function getPokemonData() {
+  const localList = localStorage.getItem("pokemonList");
+  pokemonList = localList ? JSON.parse(localList) : await getPokemonList();
+
+  localList ?? localStorage.setItem("pokemonList", JSON.stringify(pokemonList));
+
+  const localData = localStorage.getItem("pokemonData");
+  if (localData) {
+    pokemonData = new Map(JSON.parse(localData));
+  } else {
+    pokemonData = new Map(
+      pokemonList.entries.map((entry) => [entry.name, null]),
+    );
+  }
+  localStorage.setItem("pokemonData", JSON.stringify([...pokemonData]));
+}
+
+function setupSearch() {
+  const input = document.getElementById("search-pokemon");
+  const form = document.getElementById("search-form");
+
+  form.addEventListener("submit", (e) => {
+    const query = input.value.trim().toLowerCase();
+    e.preventDefault();
+    filter(query);
+  });
+
+  input.addEventListener("input", (_) => {
+    const query = input.value.trim().toLowerCase();
+    filter(query);
+  });
+}
+
+function filter(query) {
+  if (observer) observer.disconnect();
+  currentOffset = 0;
+  grid.innerHTML = "";
+
+  currentSearch = pokemonList.entries.map((entry) => entry.name);
+  if (query !== "")
+    currentSearch = currentSearch.filter((name) => name.includes(query));
+  loadNextBatch().then(() => {
+    setupInfiniteScroll();
+  });
+}
+
 init();
+
+function insertCardSorted(pokemon) {
+  const newCard = createCard(pokemon);
+  const newId = pokemon.id;
+
+  const cards = [...grid.children];
+
+  const nextCard = cards.find((card) => {
+    const cardId = Number(card.id.replace("pokemon-", ""));
+    return cardId > newId;
+  });
+
+  if (nextCard) {
+    grid.insertBefore(newCard, nextCard);
+  } else {
+    grid.appendChild(newCard);
+  }
+}

@@ -11,7 +11,7 @@
   --card-evolution-border-color: #5a3414;
   --card-evolution-text-color: #af8a89;
   --card-evolution-name-color: #565656;
-  --searchform-placeholder-color: #cccccc;
+  --search-form-placeholder-color: #cccccc;
   --cheek-size: 8vw;
   --ear-size: 5vw;
   --type-color-1: #dcdcdc;
@@ -60,14 +60,14 @@ body {
   right: calc(-1 * var(--cheek-size));
 }
 
-.searchform {
+.search-form {
   margin: 1rem auto;
   min-width: calc(240px + 0.5rem);
   max-width: calc((3 * 240px) - 1rem);
   width: 94vw;
 }
 
-.searchform input {
+.search-form input {
   width: 100%;
   border: none;
   height: 2.5rem;
@@ -76,11 +76,11 @@ body {
   font-size: 1.3rem;
 }
 
-.searchform input::placeholder {
+.search-form input::placeholder {
   text-align: center;
   font-family: "Ubuntu", sans-serif;
   font-size: 1rem;
-  color: var(--searchform-placeholder-color);
+  color: var(--search-form-placeholder-color);
   font-weight: 100;
 }
 

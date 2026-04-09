@@ -15,12 +15,20 @@ export async function getPokemonById(id) {
   }
 }
 
-export async function getMaxPokemon() {
+export async function getPokemonList() {
   const POKEMON_COUNT_URL = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
   try {
-    const response = await fetch(POKEMON_COUNT_URL);
-    const data = response.ok ? await response.json() : undefined;
-    return data.count;
+  const response = await fetch(POKEMON_COUNT_URL);
+  const data = await response.json();
+  const pokemonList = {
+    maxPokemon: data.count,
+    entries: data.results.map((pokemon) => {
+      const id = pokemon.url.split("/").at(-2);
+      return { id, name: pokemon.name };
+    }),
+  };
+  console.log(pokemonList);
+  return pokemonList;
   }
   catch (error) {
     console.error(error);

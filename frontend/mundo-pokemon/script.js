@@ -162,16 +162,11 @@ async function loadNextBatch() {
 
     if (!pokemonInfo) continue;
 
-    promises.push(
-      getPokemonById(pokemonInfo.id).then((pokemon) => {
-        pokemonData.set(pokemon.name, pokemon);
-        insertCardSorted(pokemon);
-      }),
-    );
+    getPokemonById(pokemonInfo.id).then((pokemon) => {
+      pokemonData.set(pokemon.name, pokemon);
+      insertCardSorted(pokemon);
+    });
   }
-
-  // No esperamos a que terminen para pintar, solo para liberar loading
-  await Promise.allSettled(promises);
 
   localStorage.setItem("pokemonData", JSON.stringify([...pokemonData]));
 

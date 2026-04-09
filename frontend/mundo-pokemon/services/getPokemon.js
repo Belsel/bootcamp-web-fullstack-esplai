@@ -7,10 +7,11 @@ export async function getPokemonById(id) {
     const pokeResponse = await fetch(POKEMON_URL);
     const pokeData = pokeResponse.ok ? await pokeResponse.json() : undefined;
     const speciesResponse = await fetch(SPECIES_URL);
-    const specieData = speciesResponse.ok ? await speciesResponse.json() : undefined;
+    const specieData = speciesResponse.ok
+      ? await speciesResponse.json()
+      : undefined;
     return pokemonData(pokeData, specieData);
-  }
-  catch (error) {
+  } catch (error) {
     console.error(error);
   }
 }
@@ -18,19 +19,18 @@ export async function getPokemonById(id) {
 export async function getPokemonList() {
   const POKEMON_COUNT_URL = `https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`;
   try {
-  const response = await fetch(POKEMON_COUNT_URL);
-  const data = await response.json();
-  const pokemonList = {
-    maxPokemon: data.count,
-    entries: data.results.map((pokemon) => {
-      const id = pokemon.url.split("/").at(-2);
-      return { id, name: pokemon.name };
-    }),
-  };
-  console.log(pokemonList);
-  return pokemonList;
-  }
-  catch (error) {
+    const response = await fetch(POKEMON_COUNT_URL);
+    const data = await response.json();
+    const pokemonList = {
+      maxPokemon: data.count,
+      entries: data.results.map((pokemon) => {
+        const id = pokemon.url.split("/").at(-2);
+        return { id, name: pokemon.name };
+      }),
+    };
+    console.log(pokemonList);
+    return pokemonList;
+  } catch (error) {
     console.error(error);
   }
 }

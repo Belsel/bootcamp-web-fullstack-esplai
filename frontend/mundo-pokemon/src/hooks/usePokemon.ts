@@ -8,6 +8,7 @@ const BATCH_SIZE: number = 21;
 export function usePokemon(searchedPokemon: string) {
     const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(null);
     const [storedPokemon, setStoredPokemon] = useState<Map<string, Pokemon | null>>(new Map());
+    const hasMore = useRef(true);
     const loading = useRef(false);
     const offsetRef = useRef(0);
 
@@ -43,6 +44,8 @@ export function usePokemon(searchedPokemon: string) {
 
     }, [pokemonList]);
 
+
+
     const loadNextBatch = async () => {
         if (loading.current || !pokemonList) return;
         loading.current = true;
@@ -53,6 +56,7 @@ export function usePokemon(searchedPokemon: string) {
         const newMap = new Map(storedPokemon);
 
         const slice = filtered.slice(offsetRef.current, end);
+        hasMore.current = offsetRef.current < filtered.length;
 
         await Promise.all(
             slice.map(async (name: string) => {
@@ -75,12 +79,14 @@ export function usePokemon(searchedPokemon: string) {
 
     useEffect(() => {
         offsetRef.current = 0;
+        hasMore.current = true;
     }, [searchedPokemon]);
 
     return {
         pokemonList,
         storedPokemon,
         loadNextBatch,
-        loading
+        loading,
+        hasMore
     }
 }

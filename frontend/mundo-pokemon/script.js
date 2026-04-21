@@ -187,23 +187,6 @@ function setupInfiniteScroll() {
   observer.observe(sentinel);
 }
 
-async function getPokemonData() {
-  const localList = localStorage.getItem("pokemonList");
-  pokemonList = localList ? JSON.parse(localList) : await getPokemonList();
-
-  localList ?? localStorage.setItem("pokemonList", JSON.stringify(pokemonList));
-
-  const localData = localStorage.getItem("pokemonData");
-  if (localData) {
-    pokemonData = new Map(JSON.parse(localData));
-  } else {
-    pokemonData = new Map(
-      pokemonList.entries.map((entry) => [entry.name, null]),
-    );
-  }
-  localStorage.setItem("pokemonData", JSON.stringify([...pokemonData]));
-}
-
 function setupSearch() {
   const input = document.getElementById("search-pokemon");
   const form = document.getElementById("search-form");

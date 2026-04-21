@@ -22,8 +22,8 @@ export async function getPokemon(id: number | string) {
       id: pokeData.id,
       name: pokeData.name,
       types: types,
-      evoFrom: specieData.evolves_from_species?.name ?? null,
-      description: specieData.flavor_text_entries.find((entry: { flavor_text: string, language: { name: string } }) => entry.language.name === "es")?.flavor_text.replace(/\f/g, " ") ?? null,
+      evoFrom: specieData?.evolves_from_species?.name ?? null,
+      description: specieData?.flavor_text_entries?.find((entry: { flavor_text: string, language: { name: string } }) => entry.language.name === "es")?.flavor_text.replace(/\f/g, " ") ?? null,
       img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${pokeData.id}.gif`,
       fallbackImg: pokeData.sprites.front_default,
       typeColors: types.length === 1 ? [TYPE_COLOR_MAP[types[0]].primary, TYPE_COLOR_MAP[types[0]].secondary] : types.map(type => TYPE_COLOR_MAP[type].primary)

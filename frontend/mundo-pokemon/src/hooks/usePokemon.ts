@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import type { Pokemon } from "../types/Pokemon";
 import { getPokemon, getPokemonList } from "../services/getPokemon";
 import type { PokemonListResponse, PokemonListEntry } from "../interfaces";
@@ -34,6 +34,9 @@ export function usePokemon(searchedPokemon: string) {
                 setStoredPokemon(new Map(JSON.parse(local)));
                 return
             }
+
+            if (!pokemonList) return;
+
             const data = new Map(pokemonList?.results.map((entry: { name: string, id: number }) => [entry.name, null]));
             const stringData = JSON.stringify([...data]);
             localStorage.setItem("pokemonData", stringData);
@@ -44,14 +47,17 @@ export function usePokemon(searchedPokemon: string) {
 
     }, [pokemonList]);
 
+    const filtered = useMemo(() => {
+        if (!pokemonList) return [];
+        const base = pokemonList.results.map(e => e.name);
 
+        return searchedPokemon ? base.filter(name => name.includes(searchedPokemon.toLocaleLowerCase())) : base;
+    }, [pokemonList, searchedPokemon]);
 
     const loadNextBatch = async () => {
         if (loading.current || !pokemonList) return;
         loading.current = true;
 
-        const base = pokemonList?.results.map((entry: PokemonListEntry) => entry.name) ?? [];
-        const filtered = searchedPokemon ? base.filter((name: string) => name.includes(searchedPokemon.toLocaleLowerCase())) : base;
         const end = Math.min(offsetRef.current + BATCH_SIZE, filtered.length);
         const newMap = new Map(storedPokemon);
 
@@ -60,7 +66,7 @@ export function usePokemon(searchedPokemon: string) {
 
         await Promise.all(
             slice.map(async (name: string) => {
-                if (newMap.has(name)) return;
+                if (newMap.get(name) !== null && newMap.get(name) !== undefined) return;
 
                 const info = pokemonList.results.find((entry: PokemonListEntry) => entry.name === name);
                 if (!info) return;
@@ -87,6 +93,7 @@ export function usePokemon(searchedPokemon: string) {
         storedPokemon,
         loadNextBatch,
         loading,
-        hasMore
+        hasMore,
+        filtered
     }
 }

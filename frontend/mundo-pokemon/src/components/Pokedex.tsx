@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import { usePokemon } from "../hooks/usePokemon";
 import { useSearch } from "../hooks/useSearch";
@@ -6,19 +7,23 @@ import PokeCard from "./PokeCard";
 
 export default function Pokedex() {
     const { search } = useSearch();
-    const { storedPokemon, loadNextBatch, hasMore } = usePokemon(search);
+    const { storedPokemon, loadNextBatch, hasMore, filtered } = usePokemon(search);
     const { sentinelRef } = useInfiniteScroll({
         callback: loadNextBatch,
         hasMore: hasMore.current,
     });
 
+    useEffect(() => {
+        console.log(filtered);
+    }, [filtered])
+
     return (
         <>
             <p>Texto</p>
-            {Array.from((storedPokemon.values())).map((entry: Pokemon | null) => {
-                if (!entry) return;
-                return <PokeCard key={entry.id} pokemon={entry} />
-            })}
+            {filtered.map(name => storedPokemon.get(name))
+                .filter((p): p is Pokemon => p !== null && p !== undefined)
+                .sort((a, b) => Number(a.id) - Number(b.id))
+                .map((entry) => <PokeCard key={entry.id} pokemon={entry} />)}
             <div ref={sentinelRef} />
         </>
     )

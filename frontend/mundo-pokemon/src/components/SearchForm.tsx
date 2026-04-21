@@ -9,7 +9,8 @@ export default function SearchForm() {
 
   return (
     <>
-      <form className="" id="search-form" onSubmit={handleSubmit}>
+      <form className="mx-auto my-4
+        min-w-[240px] max-w-[720px] w-[94vw]" id="search-form" onSubmit={handleSubmit}>
         <SearchBar />
       </form>
     </>

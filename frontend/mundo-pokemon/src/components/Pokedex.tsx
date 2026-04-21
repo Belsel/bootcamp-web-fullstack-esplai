@@ -17,7 +17,7 @@ export default function Pokedex() {
             <section>
 
 
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-3 max-w-180 mx-auto gap-2">
                     {filtered.map(name => storedPokemon.get(name))
                         .filter((p): p is Pokemon => p !== null && p !== undefined)
                         .sort((a, b) => Number(a.id) - Number(b.id))

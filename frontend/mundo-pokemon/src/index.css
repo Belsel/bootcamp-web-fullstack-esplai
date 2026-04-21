@@ -1,1 +1,64 @@
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    --background-color: #ffe628;
+    --card-background-color: #ffffff;
+    --card-border-color: #d7d5d3;
+    --card-figure-background-color: #dcdcdc;
+    --card-type-border-color: #e5dedb;
+    --card-type-color: #c5b8a7;
+    --card-id-color: #917b66;
+    --card-id-background: #cdcdc8;
+    --card-evolution-border-color: #5a3414;
+    --card-evolution-text-color: #af8a89;
+    --card-evolution-name-color: #565656;
+    --search-form-placeholder-color: #cccccc;
+    --type-color-1: #dcdcdc;
+    --type-color-2: #bfbfbf;
+  }
+
+  body {
+    background-color: var(--background-color);
+  }
+}
+
+@layer utilities {
+  @keyframes moveGradient {
+    0% { background-position: 0% 0% }
+    100% { background-position: -33% 0% }
+  }
+
+  @keyframes starDrift {
+    0% {
+      background-position:
+        0 0,
+        20px 35px,
+        45px 15px,
+        5px 70px,
+        35px 10px,
+        60px 55px,
+        25px 90px,
+        75px 30px;
+    }
+    100% {
+      background-position:
+        -180px 240px,
+        -150px 270px,
+        -170px 220px,
+        -190px 300px,
+        -130px 255px,
+        -160px 310px,
+        -140px 280px,
+        -200px 340px;
+    }
+  }
+
+  .animate-move-gradient {
+    animation: moveGradient 6s linear infinite;
+  }
+
+  .animate-star-drift {
+    animation: starDrift 3.2s linear infinite;
+  }
+}

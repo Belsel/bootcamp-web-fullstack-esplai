@@ -16,8 +16,8 @@ export default function PokeImage({ pokemon }: PokeImageProps) {
         transition-all group
       "
             style={{
-                ["--type-color-1" as any]: pokemon.typeColors[0],
-                ["--type-color-2" as any]: pokemon.typeColors[1] ?? pokemon.typeColors[0],
+                ["--type-color-1" as string]: pokemon.typeColors[0],
+                ["--type-color-2" as string]: pokemon.typeColors[1] ?? pokemon.typeColors[0],
             }}
         >
             <div

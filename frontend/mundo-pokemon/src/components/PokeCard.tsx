@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import type { Pokemon } from "../types/Pokemon";
+import PokeImage from "./PokeImage";
 
 type Props = {
     pokemon: Pokemon;
@@ -13,9 +14,7 @@ export default function PokeCard({ pokemon }: Props) {
 
     return (
         <>
-            <p>Carta</p>
-            <p>{pokemon.name}</p>
-            <img src={pokemon.img}></img>
+            <PokeImage pokemon={pokemon} />
         </>
     )
 }

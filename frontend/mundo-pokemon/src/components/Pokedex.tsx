@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 import { usePokemon } from "../hooks/usePokemon";
 import { useSearch } from "../hooks/useSearch";
@@ -13,18 +12,19 @@ export default function Pokedex() {
         hasMore: hasMore.current,
     });
 
-    useEffect(() => {
-        console.log(filtered);
-    }, [filtered])
-
     return (
         <>
-            <p>Texto</p>
-            {filtered.map(name => storedPokemon.get(name))
-                .filter((p): p is Pokemon => p !== null && p !== undefined)
-                .sort((a, b) => Number(a.id) - Number(b.id))
-                .map((entry) => <PokeCard key={entry.id} pokemon={entry} />)}
-            <div ref={sentinelRef} />
+            <section>
+
+
+                <div className="grid grid-cols-3">
+                    {filtered.map(name => storedPokemon.get(name))
+                        .filter((p): p is Pokemon => p !== null && p !== undefined)
+                        .sort((a, b) => Number(a.id) - Number(b.id))
+                        .map((entry) => <PokeCard key={entry.id} pokemon={entry} />)}
+                    <div ref={sentinelRef} />
+                </div>
+            </section>
         </>
     )
 }

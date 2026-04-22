@@ -17,7 +17,7 @@ export default function SearchBar() {
         placeholder="Filtra Pokémon por nombre..."
         className="w-full h-10 text-center text-lg font-ubuntu
         shadow-md outline-none border-none
-        placeholder:text-[var(--search-form-placeholder-color)]
+        placeholder:text-(--search-form-placeholder-color)
         placeholder:font-light
         rounded-sm"
         value={search}

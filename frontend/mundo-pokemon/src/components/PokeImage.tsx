@@ -78,7 +78,8 @@ export default function PokeImage({ pokemon }: PokeImageProps) {
           absolute left-1/2 top-1/2
           -translate-x-1/2 -translate-y-1/2
           transition-transform duration-700 ease-out
-          group-hover:scale-[2] group-hover:-translate-y-[20%]
+          origin-left
+          group-hover:scale-[1.7] group-hover:-translate-y-[40%]
         "
             />
 

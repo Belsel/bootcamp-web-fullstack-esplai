@@ -9,11 +9,11 @@ interface PokemonResult {
 
 export async function getPokemon(id: number | string) {
   const POKEMON_URL = `https://pokeapi.co/api/v2/pokemon/${id}`;
-  const SPECIES_URL = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
   try {
     const pokeResponse = await fetch(POKEMON_URL);
     const pokeData = pokeResponse.ok ? await pokeResponse.json() : undefined;
-    const speciesResponse = await fetch(SPECIES_URL);
+    const speciesURL = pokeData.species.url;
+    const speciesResponse = await fetch(speciesURL);
     const specieData = speciesResponse.ok
       ? await speciesResponse.json()
       : undefined;

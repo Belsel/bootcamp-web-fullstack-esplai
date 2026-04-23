@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useState } from "react";
 import { SearchContext } from "../../context/searchContext";
 
@@ -10,10 +10,6 @@ export default function SearchProvider({ children }: Props) {
     const [search, setSearch] = useState<string>("");
 
     const value = useMemo(() => ({ search, setSearch }), [search]);
-
-    useEffect(() => {
-        console.log(search);
-    }, [search])
 
     return (
         <>

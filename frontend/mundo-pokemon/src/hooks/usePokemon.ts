@@ -5,7 +5,7 @@ import type { PokemonListResponse, PokemonListEntry } from "../interfaces";
 
 const BATCH_SIZE: number = 21;
 
-export function usePokemon(searchedPokemon: string) {
+export function usePokemon(searchedPokemon = "") {
     const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(null);
     const [storedPokemon, setStoredPokemon] = useState<Map<string, Pokemon | null>>(new Map());
     const hasMore = useRef(true);

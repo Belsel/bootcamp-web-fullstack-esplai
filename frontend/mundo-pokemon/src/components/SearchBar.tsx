@@ -12,7 +12,7 @@ export default function SearchBar() {
     <>
       <input
         id="search-pokemon"
-        type="text"
+        type="search"
         name="pokemon"
         placeholder="Filtra Pokémon por nombre..."
         className="w-full h-10 text-center text-lg font-ubuntu
